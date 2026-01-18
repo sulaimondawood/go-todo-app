@@ -20,7 +20,7 @@ func Load() (*Config, error) {
 		log.Println("Warning: .env file not found using environment variables")
 	}
 
-	var config *Config = &Config{
+	config := &Config{
 		DB_URL: os.Getenv("DB_URL"),
 		Port:   os.Getenv("PORT"),
 	}
