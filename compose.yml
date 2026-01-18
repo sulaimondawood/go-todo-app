@@ -1,0 +1,16 @@
+services:
+  todo-db:
+    image: postgres:14.20
+    container_name: todo-db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: todo-db
+    volumes:
+      - todoDB:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  todoDB:
