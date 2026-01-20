@@ -28,4 +28,16 @@ func Connect(connectionStr string) (*pgxpool.Pool, error) {
 		return nil, err
 	}
 
+	err = pool.Ping(ctx)
+
+	if err != nil {
+		log.Printf("Unable to Ping database %v", err)
+		pool.Close()
+		return nil, err
+	}
+
+	log.Println("Successfully connected to PostgreSQL database")
+
+	return pool, nil
+
 }
